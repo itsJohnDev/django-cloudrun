@@ -5,3 +5,8 @@ variable "region" {
 variable "service_name" {
   default = "django-app"
 }
+
+variable "environment" {
+  description = "Deployment environment (staging or prod)"
+  type        = string
+}

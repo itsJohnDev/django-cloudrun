@@ -1,5 +1,5 @@
 resource "google_cloud_run_service" "app" {
-  name     = var.service_name
+  name     = "${var.service_name}-${var.environment}"
   location = var.region
 
   template {
@@ -32,6 +32,11 @@ resource "google_cloud_run_service" "app" {
         env {
           name  = "ALLOWED_HOSTS"
           value = ".run.app,localhost"
+        }
+
+        env {
+          name  = "ENVIRONMENT"
+          value = var.environment
         }
       }
     }
