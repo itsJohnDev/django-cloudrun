@@ -29,6 +29,11 @@ ALLOWED_HOSTS = os.environ.get(
     ".run.app,localhost,127.0.0.1"
 ).split(",")
 
+ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
+
+if ENVIRONMENT == "staging":
+    DEBUG = False
+    
 # Application definition
 
 INSTALLED_APPS = [
